@@ -17,7 +17,9 @@
     "@shopify/ui-extensions": "2024.1.1",
     "@shopify/ui-extensions-react": "2024.1.1",
     "express": "^4.19.2",
-    "react": "^18.2.0"
+    "mysql2": "^3.9.3",
+    "react": "^18.2.0",
+    "react-router-dom": "^6.22.3"
   },
   "author": "BOA Ideas",
   "devDependencies": {
