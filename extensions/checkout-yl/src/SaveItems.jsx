@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useAuthenticatedFetch } from '../../../web/frontend/hooks/useAuthenticatedFetch';
 
 export default function SaveItems(props) {
-    const baseUrl = 'https://bias-nextel-phrase-shaved.trycloudflare.com/api/';
+    const baseUrl = 'https://bt-foto-kansas-infrared.trycloudflare.com/';
     const appfetch=useAuthenticatedFetch();
     const fetchSaveCheckout = async (products, checkoutToken) => {
       try {
-        //i tried to use useAuthenticatedFetch but 
+        
         const response = await appfetch(baseUrl, {
           method: 'POST',
           headers: {

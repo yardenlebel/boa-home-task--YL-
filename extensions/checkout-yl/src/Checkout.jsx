@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { reactExtension, View, Icon, Text, Button,useCheckoutToken, useCartLines,useApi } from '@shopify/ui-extensions-react/checkout';
+import { reactExtension, View, Icon, Text, Button,InlineLayout, useCartLines,useApi } from '@shopify/ui-extensions-react/checkout';
 import CheckBox from './CheckBox.jsx'; 
 import SaveItems from './SaveItems.jsx';
 import { AppBridgeProvider} from '../../../web/frontend/components/providers/AppBridgeProvider.jsx';
-import {QueryProvider } from '../../../web/frontend/components/providers/QueryProvider.jsx';
-import { PolarisProvider} from '../../../web/frontend/components/providers/PolarisProvider.jsx';
 import { BrowserRouter } from 'react-router-dom';
 
 export default reactExtension(
@@ -19,7 +17,6 @@ const Extension = () => {
   const [showSaveItems, setShowSaveItems] = useState(false); // State to control SaveItems visibility
 
   const info=useApi();
-  console.log(info)
 
   //get products in cart
   const cartLines = useCartLines();
@@ -44,18 +41,24 @@ const Extension = () => {
 
   return (
     
-        <View border="base" position="loose">
-          <View border="none" padding="tight">
-            <Icon source="info" />
+        <View border="base" inlineAlignment={"start"} >
+          <InlineLayout columns={['20%', 'fill']}>
+          <View border="none" padding={"tight"} >
+
+             <Icon source="info" appearance="decorative"/>
+             </View>
+             <View border="none" padding={"tight"} >
+            <Text size='medium'>Save your cart</Text>
           </View>
-          <View border="none" padding="tight">
-            <Text>Save your cart</Text>
-          </View>
+          </InlineLayout>
+           
+          <View  border="none" padding="base">
           <CheckBox cartData={cartData} setProductsToSave={setProductsToSave} ProductsToSave={ProductsToSave} />
-          <View border="none" padding="loose">
+          </View>
+          <View border="none"  padding="base">
             <Button onPress={handleSubmit}>Save</Button>
           </View>
-          {showSaveItems &&
+          {showSaveItems && 
               <BrowserRouter>
                 <AppBridgeProvider >
                   <SaveItems ProductsToSave={ProductsToSave} checkoutToken={checkoutToken} />
